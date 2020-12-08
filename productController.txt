@@ -1,0 +1,15 @@
+@PostMapping(value="/products/{prodid}/stock1/{stock}",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void updateStock(@PathVariable("stock") int stock,@PathVariable("prodid") int prodid) {
+		logger.info("updation of stock for :",prodid);
+		proser.updateStock(prodid, stock);
+	}
+	@PostMapping(value="/productsadd", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void addProduct(@RequestBody ProductDTO proDTO) {
+		logger.info("adding the product :",proDTO.getProductname());
+		proser.addProduct(proDTO);
+	}
+	@GetMapping(value="/products/{prodid}/id",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductDTO getProductById(@PathVariable Integer prodid) {
+		logger.info("getting product :",prodid);
+		return proser.getProductbyId(prodid);
+	}
