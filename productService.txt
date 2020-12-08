@@ -1,0 +1,16 @@
+public void updateStock(@PathVariable int prodid,@PathVariable int stock  ) {
+    	ProductEntity po=prodrepo1.findById(prodid).get();
+    	int a=po.getStock()+stock;
+    	po.setStock(a);
+    	prodrepo1.save(po);
+    }
+    
+    public void addProduct(ProductDTO proDto) {
+    	ProductEntity p=ProductDTO.valueOf(proDto);
+    	prodrepo1.save(p);
+  
+    }
+    public ProductDTO getProductbyId(Integer prodid) {
+    	ProductDTO p=ProductDTO.valueOf(prodrepo1.findById(prodid).get());
+    	return p;
+    }
